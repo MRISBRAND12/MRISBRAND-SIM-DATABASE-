@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; &#119826;&#119816;&#119820;&#119811;&#119808;&#119827;&#119808;&#119809;&#119808;&#119826;&#119812;</title>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }body {
+        margin: 0;
+        background: url('https://i.postimg.cc/R0YwL2jG/20250521-184749.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: #0ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    #app {
+        background: rgba(0, 0, 0, 0.85);
+        border: 3px solid #00ffff;
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+        padding: 30px 20px;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #0ff;
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        color: #0ff;
+        margin-bottom: 20px;
+    }
+
+    input, button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 2px solid #0ff;
+        background-color: black;
+        color: #0ff;
+        font-size: 14px;
+    }
+
+    button {
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+    }
+
+    button:hover {
+        background-color: #0ff;
+        color: black;
+        transform: scale(1.04);
+    }
+
+    .result-box {
+        background: rgba(0, 0, 0, 0.6);
+        border: 2px solid #0ff;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 0 0 10px #0ff;
+    }
+
+    .result-box p {
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer {
+        margin-top: 20px;
+        font-size: 13px;
+        color: #0ff;
+    }
+
+    .whatsapp-btn {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        padding: 12px;
+        border: 2px solid #0ff;
+        border-radius: 10px;
+        color: #0ff;
+        background-color: black;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+        transition: 0.3s;
+    }
+
+    .whatsapp-btn:hover {
+        background-color: #0ff;
+        color: black;
+        transform: scale(1.04);
+    }
+</style>
+
+</head>
+<body>
+<div id="app">
+    <h1><i class="fas fa-database"></i> &#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; &#119826;&#119816;&#119820;&#119811;&#119808;&#119827;&#119808;&#119809;&#119808;&#119826;&#119812;</h1>
+    <div class="subtitle">This Website is free for all users to get any sim data.</div>
+    <input type="text" id="searchInput" placeholder="923xxxxxxx...">
+    <button id="searchBtn">GET DETAILS</button>
+
+    <!-- &#9989; WhatsApp Button Added Below -->
+    <a href="https://chat.whatsapp.com/B7npygtAnImCEKYhFLpNcW?mode=ac_t" target="_blank" class="whatsapp-btn">JOIN OUR TEAM</a>
+
+    <div id="noData"></div>
+    <div id="results"></div>
+    <div class="footer">&copy;&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; | All Rights Reserved</div>
+</div>
+
+<script>
+    document.getElementById('searchBtn').addEventListener('click', search);
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') search();
+    });
+
+    function search() {
+        const query = document.getElementById('searchInput').value.trim();
+        const url = `https://pakdatabase.site/api/search.php?username=Kami&password=123456&search_term=${encodeURIComponent(query)}`;
+        const resultsContainer = document.getElementById("results");
+        const noData = document.getElementById("noData");
+
+        resultsContainer.innerHTML = '';
+        noData.innerHTML = 'Searching...';
+
+        if (query === '') {
+            noData.innerHTML = '&#9888;&#65039; Please enter a valid number';
+            return;
+        }
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                let output = '';
+                const numbers = new Set();
+
+                for (const network in data) {
+                    const records = data[network];
+                    if (Array.isArray(records)) {
+                        records.forEach(entry => {
+                            const mobile = entry.Mobile || entry.SUB_NO || '';
+                            if (!mobile || numbers.has(mobile)) return;
+
+                            numbers.add(mobile);
+                            const name = entry.Name || entry.NAME || 'N/A';
+                            const cnic = entry.CNIC || entry.NIC || 'N/A';
+                            const address = entry.Address || entry.ADDRESS || 'N/A';
+
+                            output += `
+                            <div class="result-box">
+                                <p><strong>Mobile: <span>${mobile}
+                                <p><strong>Name: <span>${name}
+                                <p><strong>ID Card: <span>${cnic}
+                                <p><strong>Address: <span>${address}
+                            
+                            `;
+                        });
+                    }
+                }
+
+                if (output) {
+                    resultsContainer.innerHTML = output;
+                    noData.innerHTML = '';
+                } else {
+                    noData.innerHTML = 'No data found for this number.';
+                }
+            })
+            .catch(err => {
+                console.error("API error:", err);
+                noData.innerHTML = '&#9888;&#65039; API response failed. Try again or contact admin.';
+            });
+    }
+</script>
+<script type="text/javascript" src="//pl26635370.profitableratecpm.com/0d/d6/68/0dd66892ae1350e1c2ac63bd9e54e111.js"></script></body>
+</html>
