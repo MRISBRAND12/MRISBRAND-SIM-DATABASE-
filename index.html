@@ -1,196 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; &#119826;&#119816;&#119820;&#119811;&#119808;&#119827;&#119808;&#119809;&#119808;&#119826;&#119812;</title>
-    <link rel="icon" href="favicon.ico">
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Orbitron', sans-serif;
-        }body {
-        margin: 0;
-        background: url('https://i.postimg.cc/R0YwL2jG/20250521-184749.jpg') no-repeat center center fixed;
-        background-size: cover;
-        color: #0ff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MRISBRAND SIM DATABASE</title>
+
+  <meta name="description" content="Premium Intelligence Network">
+
+  <link rel="icon" href="favicon.ico">
+
+  <link href="css/all.min.css" rel="stylesheet">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body {
+
+      font-family: 'Orbitron', sans-serif;
+
+      background: url('https://i.postimg.cc/R0YwL2jG/20250521-184749.jpg') no-repeat center center fixed;
+
+      background-size: cover;
+
+      color: #0ff;
+
+      min-height: 100vh;
+
+      padding: 20px;
+
     }
 
-    #app {
-        background: rgba(0, 0, 0, 0.85);
-        border: 3px solid #00ffff;
-        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
-        padding: 30px 20px;
-        max-width: 600px;
-        width: 100%;
-        border-radius: 15px;
-        text-align: center;
+    .container {
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      padding: 30px 20px;
+
     }
 
-    h1 {
-        font-size: 28px;
-        margin-bottom: 10px;
-        color: #0ff;
-        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    /* HEADER / BRAND */
+
+    header {
+
+      text-align: center;
+
+      margin: 40px 0 20px;
+
+    }
+
+    .brand-title {
+
+      font-family: 'Great Vibes', cursive;
+
+      font-size: clamp(50px, 12vw, 120px);
+
+      color: #0ff;
+
+      text-shadow: 0 0 20px #0ff, 0 0 40px #00f;
+
     }
 
     .subtitle {
-        font-size: 14px;
-        color: #0ff;
-        margin-bottom: 20px;
+
+      margin-top: 10px;
+
+      font-size: .9rem;
+
+      letter-spacing: 4px;
+
+      color: #0ff;
+
+      text-shadow: 0 0 10px #00f;
+
+      text-transform: uppercase;
+
     }
 
-    input, button {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 10px;
-        border: 2px solid #0ff;
-        background-color: black;
-        color: #0ff;
-        font-size: 14px;
+    /* CARDS */
+
+    .main-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+
+      gap: 18px;
+
     }
 
-    button {
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-        box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+    .card {
+
+      background: rgba(0,0,0,0.85);
+
+      border: 2px solid #0ff;
+
+      border-radius: 15px;
+
+      box-shadow: 0 0 20px #0ff, 0 0 40px #00f;
+
+      padding: 20px;
+
+      text-align: center;
+
     }
 
-    button:hover {
-        background-color: #0ff;
-        color: black;
-        transform: scale(1.04);
+    .card h2 {
+
+      color: #0ff;
+
+      margin-bottom: 12px;
+
     }
 
-    .result-box {
-        background: rgba(0, 0, 0, 0.6);
-        border: 2px solid #0ff;
-        border-radius: 10px;
-        padding: 15px;
-        margin-top: 20px;
-        box-shadow: 0 0 10px #0ff;
+    .card p, .card li {
+
+      color: #0ff;
+
+      opacity: 0.85;
+
     }
 
-    .result-box p {
-        margin: 5px 0;
-        display: flex;
-        justify-content: space-between;
+    .card ul {
+
+      list-style: none;
+
+      padding: 0;
+
     }
 
-    .footer {
-        margin-top: 20px;
-        font-size: 13px;
-        color: #0ff;
+    .card ul li {
+
+      padding: 8px 0;
+
+      border-bottom: 1px solid rgba(0,255,255,0.2);
+
     }
 
-    .whatsapp-btn {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        padding: 12px;
-        border: 2px solid #0ff;
-        border-radius: 10px;
-        color: #0ff;
-        background-color: black;
-        font-weight: bold;
-        text-decoration: none;
-        box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
-        transition: 0.3s;
+    .card ul li:last-child {border-bottom:none}
+
+    /* FORM */
+
+    .form {
+
+      margin-top: 15px;
+
+      display: grid;
+
+      gap: 12px;
+
     }
 
-    .whatsapp-btn:hover {
-        background-color: #0ff;
-        color: black;
-        transform: scale(1.04);
+    .input-wrap {
+
+      position: relative;
+
     }
-</style>
+
+    .input-wrap i {
+
+      position: absolute;
+
+      left: 14px;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #0ff;
+
+    }
+
+    input#phone {
+
+      width: 100%;
+
+      padding: 14px 16px 14px 44px;
+
+      border-radius: 10px;
+
+      border: 2px solid #0ff;
+
+      background: rgba(0,0,0,0.7);
+
+      color: #0ff;
+
+      text-align: center;
+
+      font-size: 1rem;
+
+    }
+
+    input#phone:focus {
+
+      outline: none;
+
+      box-shadow: 0 0 15px #0ff;
+
+    }
+
+    .btn {
+
+      padding: 14px;
+
+      border: 2px solid #0ff;
+
+      border-radius: 10px;
+
+      background: black;
+
+      color: #0ff;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      text-transform: uppercase;
+
+      transition: 0.3s;
+
+      box-shadow: 0 0 15px #0ff, 0 0 25px #00f;
+
+    }
+
+    .btn:hover {
+
+      background: #0ff;
+
+      color: black;
+
+      transform: scale(1.04);
+
+    }
+
+    /* SOCIAL ICONS */
+
+    .social-icons {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 16px;
+
+      margin: 20px 0;
+
+    }
+
+    .social-icon {
+
+      width: 45px;
+
+      height: 45px;
+
+      border: 2px solid #0ff;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #0ff;
+
+      font-size: 1.2rem;
+
+      box-shadow: 0 0 10px #0ff;
+
+      transition: 0.3s;
+
+    }
+
+    .social-icon:hover {
+
+      background: #0ff;
+
+      color: black;
+
+      transform: scale(1.1);
+
+    }
+
+    /* FOOTER */
+
+    footer {
+
+      text-align: center;
+
+      font-size: .85rem;
+
+      margin-top: 40px;
+
+      color: #0ff;
+
+      opacity: 0.7;
+
+    }
+
+  /* existing styles... */
+
+  .contact-buttons {
+
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+  }
+
+  .contact-buttons .btn {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+  }
+
+  </style>
 
 </head>
+
 <body>
-<div id="app">
-    <h1><i class="fas fa-database"></i> &#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; &#119826;&#119816;&#119820;&#119811;&#119808;&#119827;&#119808;&#119809;&#119808;&#119826;&#119812;</h1>
-    <div class="subtitle">This Website is free for all users to get any sim data.</div>
-    <input type="text" id="searchInput" placeholder="923xxxxxxx...">
-    <button id="searchBtn">GET DETAILS</button>
 
-    <!-- &#9989; WhatsApp Button Added Below -->
-    <a href="https://mrisbrand-network01.vercel.app/" target="_blank" class="whatsapp-btn">JOIN OUR NETWORK</a>
+<div class="container">
 
-    <div id="noData"></div>
-    <div id="results"></div>
-    <div class="footer">&copy;&#119820;&#119825; &#119816;&#119826; &#119809;&#119825;&#119808;&#119821;&#119811; | All Rights Reserved</div>
+  <header>
+
+    <div class="brand" id="brand">
+
+
+
+<section class="card">
+
+      <div class="brand-title">&#120132;&#8477;&#120128;&#120138;&#120121;&#8477;&#120120;&#8469;&#120123; &#120138;&#120128;&#120132; &#120123;&#120120;&#120139;&#120120;&#120121;&#120120;&#120138;&#120124;</div>
+
+    </section></div>
+
+  </header>
+
 </div>
 
+<div class="verified">
+
+  <svg viewbox="0 0 512 512" aria-hidden="true">
+
+    <defs>
+
+      <lineargradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+
+        <stop offset="0%" stop-color="#3ea7ff"></stop>
+
+        <stop offset="100%" stop-color="#9bd4ff"></stop>
+
+      </lineargradient>
+
+    </defs>
+
+    <path d="M256 24l54.2 38.4 65.5-6.5 24.7 61 61 24.7-6.5 65.5L512 256l-57.1 48.9 6.5 65.5-61 24.7-24.7 61-65.5-6.5L256 488l-54.2-38.4-65.5 6.5-24.7-61-61-24.7 6.5-65.5L0 256l57.1-48.9-6.5-65.5 61-24.7 24.7-61 65.5 6.5L256 24z" fill="url(#gradBlue)"></path>
+
+    <path d="M226 314l-56-56 34-34 22 22 86-86 34 34-120 120z" fill="#fff"></path>
+
+  </svg>
+
+  <div class="owner"></div>
+
+</div>
+
+<form id="form" class="form" autocomplete="off">
+
+  <div class="input-wrap">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    <input id="phone" inputmode="numeric" placeholder="Enter number (e.g. 31192xxxxx)" maxlength="13">
+
+  </div>
+
+  <p class="input-guidance"></p>
+
+  <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+
+  <!-- Contact Buttons (inside form, below Search) -->
+
+  <div class="contact-buttons">
+
+    <a href="https://mrisbrand-network01.vercel.app/" target="_blank" class="btn">
+
+      <i class="fab fa-whatsapp"></i> Join Our Network
+
+    </a>
+
+
+  </div>
+
+</form>
+
+<div id="result"></div>
+
+<section class="card">
+
+
+
+  <h2>About Us</h2>
+
+  <div class="hr"></div>
+
+  <p>MRISBRAND WORLD IS ONE OF THE TOP HACKERS TEAM IN PAKISTAN WHICH PROVIDE &#128175; FREE TOOLS AND MANY TRICKS.</p>
+
+</section>
+
+<section class="card">
+
+  <h2>Our Services</h2>
+
+  <div class="hr"></div>
+
+  <ul class="feature-list">
+
+    <li><i class="fa-solid fa-shield-halved"></i> CNIC / SIM Verification</li>
+
+    <li><i class="fa-solid fa-database"></i> FAKE SIMS + PASSPORT DETAILS &amp; LIVE LOCATION </li>
+
+    <li><i class="fa-solid fa-clock-rotate-left"></i> CDR OF ALL NETWORS</li>
+
+    <li><i class="fa-solid fa-lock"></i> ALL NADRA DATA AVAILABLE</li>
+
+  </ul>
+
+</section>
+
+
+
+<p>&copy; 2025 MRISBRAND INTELLIGENCE NETWORK | ALL RIGHTS RESERVED</p>
+
+<p>v5.0.0 | OPERATION SPECTRE</p>
+
 <script>
-    document.getElementById('searchBtn').addEventListener('click', search);
-    document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') search();
-    });
 
-    function search() {
-        const query = document.getElementById('searchInput').value.trim();
-        const url = `https://pakdatabase.site/api/search.php?username=Kami&password=123456&search_term=${encodeURIComponent(query)}`;
-        const resultsContainer = document.getElementById("results");
-        const noData = document.getElementById("noData");
+  (function Data(){
 
-        resultsContainer.innerHTML = '';
-        noData.innerHTML = 'Searching...';
+    const form = document.getElementById('form');
 
-        if (query === '') {
-            noData.innerHTML = '&#9888;&#65039; Please enter a valid number';
-            return;
+    const result = document.getElementById('result');
+
+    function show(html){ result.innerHTML=html; result.classList.add('show') }
+
+    function escape(str){ return String(str).replace(/[&<>]/g, s=> ({'&':'&amp;','<':'&lt;','>':'&gt;'}[s]) ) }
+
+    async function fetchData(num){
+
+      try{
+
+        show(`<div class="msg loading"><i class="fas fa-circle-notch fa-spin"><p>ACCESSING SECURE DATABASES...`);
+
+        const res = await fetch(`https://famofcfallxd.serv00.net/apis/simdata2.php?num=${encodeURIComponent(num)}`);
+
+        if(!res.ok) throw new Error('Network '+res.status);
+
+        const data = await res.json();
+
+        if(data.status==='success' && data.data && data.data.length>0){
+
+          let html='';
+
+          data.data.forEach(rec=>{
+
+            html += '<div class="result-box">';
+
+            Object.entries(rec).forEach(([k,v])=>{
+
+              html += `<div class="row"><span class="label">${escape(k).toUpperCase()}: <span class="value">${escape(v)}`;
+
+            });
+
+            html += ''; // close result-box
+
+          });
+
+          show(html);
+
+        } else {
+
+          const nf = `<div class="msg error">
+
+            <i class="fas fa-triangle-exclamation" style="font-size:1.4em;margin-bottom:8px">
+
+            <p><strong>Data Not Found in Free Database.
+
+            <p>For guaranteed results, a <strong>Premium Search is available for PKR 500. Please contact us to proceed.
+
+            <a class="btn" style="margin-top:10px;text-decoration:none" target="_blank" href="https://wa.me/923299073374?text=${encodeURIComponent('Hello MRISBRAND SIM DATABASE Admin, I need premium search for number: '+num)}">
+
+              <i class="fab fa-whatsapp"> Contact for Premium Search
+
+            
+
+          `;
+
+          show(nf);
+
         }
 
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                let output = '';
-                const numbers = new Set();
+      }catch(err){
 
-                for (const network in data) {
-                    const records = data[network];
-                    if (Array.isArray(records)) {
-                        records.forEach(entry => {
-                            const mobile = entry.Mobile || entry.SUB_NO || '';
-                            if (!mobile || numbers.has(mobile)) return;
+        console.error(err);
 
-                            numbers.add(mobile);
-                            const name = entry.Name || entry.NAME || 'N/A';
-                            const cnic = entry.CNIC || entry.NIC || 'N/A';
-                            const address = entry.Address || entry.ADDRESS || 'N/A';
+        show(`<div class="msg error">Error: Could not connect to the server. Please try again later.`);
 
-                            output += `
-                            <div class="result-box">
-                                <p><strong>Mobile: <span>${mobile}
-                                <p><strong>Name: <span>${name}
-                                <p><strong>ID Card: <span>${cnic}
-                                <p><strong>Address: <span>${address}
-                            
-                            `;
-                        });
-                    }
-                }
+      }
 
-                if (output) {
-                    resultsContainer.innerHTML = output;
-                    noData.innerHTML = '';
-                } else {
-                    noData.innerHTML = 'No data found for this number.';
-                }
-            })
-            .catch(err => {
-                console.error("API error:", err);
-                noData.innerHTML = '&#9888;&#65039; API response failed. Try again or contact admin.';
-            });
     }
+
+    form.addEventListener('submit', e=>{
+
+      e.preventDefault();
+
+      const num = document.getElementById('phone').value.trim();
+
+      const valid = /^(?:\+?92)?3\d{9}$|^3\d{9}$/.test(num);
+
+      if(!valid){ show('<div class="msg error">Invalid number format. Please enter 10 digits without 0, like 3168598809.'); return }
+
+      fetchData(num);
+
+      if(window.__openAd) window.__openAd();
+
+    })
+
+  })();
+
 </script>
-<script type="text/javascript" src="//pl26635370.profitableratecpm.com/0d/d6/68/0dd66892ae1350e1c2ac63bd9e54e111.js"></script></body>
+
+<style>
+
+  /* Results styled in separate boxes */
+
+  .result-box {
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(62,167,255,0.3);
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    margin: 10px 0;
+
+  }
+
+  .result-box .row {
+
+    margin: 4px 0;
+
+  }
+
+  .result-box .label {
+
+    font-weight: bold;
+
+    color: #3ea7ff;
+
+    margin-right: 6px;
+
+  }
+
+  .result-box .value {
+
+    color: #fff;
+
+  }
+
+</style>
+</body>
+
 </html>
